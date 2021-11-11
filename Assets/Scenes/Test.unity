@@ -207,6 +207,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1363660439 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1029736405, guid: ec127cb92120ff74a9ee227c81646302,
+    type: 3}
+  m_PrefabInstance: {fileID: 1852506199162427356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1714422619
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +226,7 @@ GameObject:
   - component: {fileID: 1714422620}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,7 +318,7 @@ Transform:
   m_GameObject: {fileID: 1714422619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 3.4043, y: 1, z: 1}
+  m_LocalScale: {x: 10.170346, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -325,6 +331,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1029736405, guid: ec127cb92120ff74a9ee227c81646302, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029736406, guid: ec127cb92120ff74a9ee227c81646302, type: 3}
+      propertyPath: rigidBody
+      value: 
+      objectReference: {fileID: 1363660439}
     - target: {fileID: 4764879087256535336, guid: ec127cb92120ff74a9ee227c81646302,
         type: 3}
       propertyPath: m_RootOrder

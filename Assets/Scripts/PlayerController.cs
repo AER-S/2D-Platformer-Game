@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             onGround = true;
+            jump = false;
         } 
     }
 
