@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
 
     private bool run;
     private bool crouch;
+<<<<<<< HEAD
     private bool jump;
+=======
+>>>>>>> Feature_2_PlayerController
     private bool onGround;
     
     
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
         }
 
-        if (_vertical>0)
+        if (_vertical>0 && onGround)
         {
             animator.SetTrigger("jump");
         }
