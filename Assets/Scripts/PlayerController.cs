@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.SpriteAssetUtilities;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower = 2f;
 
     private bool run;
+    private bool jump;
     private bool crouch;
     private bool onGround;
     
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        jump = false;
         run = false;
         crouch = false;
         onGround = false;
@@ -44,9 +47,10 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
         }
 
-        if (_vertical>0 && onGround)
+        if (_vertical>0 && onGround && !jump)
         {
             animator.SetTrigger("jump");
+            jump = true;
         }
         
         animator.SetFloat("speed",Mathf.Abs(_horizontal));
