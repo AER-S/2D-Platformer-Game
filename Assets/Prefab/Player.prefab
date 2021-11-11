@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1029736404}
   - component: {fileID: 1029736406}
   - component: {fileID: 1029736405}
-  - component: {fileID: 5148685171437107289}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -148,6 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4832908076523182247}
+  rigidBody: {fileID: 0}
+  walkSpeed: 2
+  runFactor: 2
+  jumpPower: 2
 --- !u!50 &1029736405
 Rigidbody2D:
   serializedVersion: 4
@@ -169,16 +172,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5148685171437107289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5292512842174848589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39789204157501044b49e38beb6f0e0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4832908076523182247}
