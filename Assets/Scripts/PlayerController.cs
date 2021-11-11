@@ -13,10 +13,6 @@ public class PlayerController : MonoBehaviour
 
     private bool run;
     private bool crouch;
-<<<<<<< HEAD
-    private bool jump;
-=======
->>>>>>> Feature_2_PlayerController
     private bool onGround;
     
     
@@ -32,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float vertical = Input.GetAxisRaw("Vertical");
         run = Input.GetKey(KeyCode.LeftShift);
         crouch = Input.GetKey(KeyCode.LeftControl);
         
@@ -65,24 +61,34 @@ public class PlayerController : MonoBehaviour
         {
             if (!crouch)
             {
+                float speed = Mathf.Abs(_horizontal);
                 float xMovingSpeed = Mathf.Abs(rigidBody.velocity.x);
                 float desiredSpeed = (run)? (walkSpeed*runFactor):walkSpeed;
-                if (xMovingSpeed<desiredSpeed)
+                if (speed>0.2f && xMovingSpeed<desiredSpeed)
                 {
                     rigidBody.velocity = Vector2.right * (_horizontal * desiredSpeed);
+                }
+                else if (speed<0.2f)
+                {
+                    StopPlayer();
                 }
 
                 if (_vertical>0)
                 {
-                    rigidBody.velocity += Vector2.up * (_vertical * jumpPower);
+                    rigidBody.velocity += Vector2.up * jumpPower;
                 }
             }
             else
             {
-                rigidBody.velocity=Vector2.zero;
+                StopPlayer();
             }
         }
         
+    }
+
+    void StopPlayer()
+    {
+        rigidBody.velocity = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
