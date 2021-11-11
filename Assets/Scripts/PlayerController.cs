@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     private bool run;
     private bool crouch;
-    private bool jump;
+    private bool onGround;
     
     
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
         }
 
-        if (_vertical>0)
+        if (_vertical>0 && onGround)
         {
             animator.SetTrigger("jump");
         }
