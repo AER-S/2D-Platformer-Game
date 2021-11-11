@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     private bool run;
     private bool crouch;
+    private bool jump;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -20,18 +22,25 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
         run = Input.GetKey(KeyCode.LeftShift);
         crouch = Input.GetKey(KeyCode.LeftControl);
-        Animate(horizontal);
+        Animate(horizontal, vertical);
     }
 
-    void Animate(float _horizontal)
+    void Animate(float _horizontal, float _vertical)
     {
         
         if (Mathf.Abs(_horizontal) > 0.2f)
         {
             transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
         }
+
+        if (_vertical>0)
+        {
+            animator.SetTrigger("jump");
+        }
+        
         animator.SetFloat("speed",Mathf.Abs(_horizontal));
         animator.SetBool("run",run);
         animator.SetBool("crouch",crouch);
