@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground") && rigidBody.velocity.y > -0.02f)
+        if (other.gameObject.CompareTag("Ground") && Math.Abs(rigidBody.velocity.y) > 0.02f)
         {
             onGround = true;
             jump = false;
