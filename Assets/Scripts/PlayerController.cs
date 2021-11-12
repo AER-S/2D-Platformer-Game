@@ -60,6 +60,11 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("speed",Mathf.Abs(_horizontal));
             animator.SetBool("crouch",crouch);
         }
+        else
+        {
+            animator.SetFloat("speed", 0f);
+            
+        }
     }
 
     void Move(float _horizontal, float _vertical)
