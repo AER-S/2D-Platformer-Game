@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class KeyController : MonoBehaviour
 {
+    [SerializeField] private int keyValue;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
-            player.PickUp();
+            player.PickUp(keyValue);
             Destroy(gameObject);
         }
     }

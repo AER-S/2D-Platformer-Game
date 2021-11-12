@@ -120,9 +120,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PickUp()
+    public void PickUp(int _score)
     {
         Debug.Log("Player picked up a key");
-        score.UpdatScore(100);
+        score.UpdatScore(_score);
     }
 }
