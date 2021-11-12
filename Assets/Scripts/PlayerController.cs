@@ -88,7 +88,8 @@ public class PlayerController : MonoBehaviour
 
                 if (_vertical>0)
                 {
-                    rigidBody.velocity += Vector2.up * jumpPower;
+                    Vector2 newJump = new Vector2(rigidBody.velocity.x, jumpPower);
+                    rigidBody.velocity = newJump;
                 }
             }
             else
