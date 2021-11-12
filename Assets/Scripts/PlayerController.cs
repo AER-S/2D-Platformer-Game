@@ -53,9 +53,13 @@ public class PlayerController : MonoBehaviour
             jump = true;
         }
         
-        animator.SetFloat("speed",Mathf.Abs(_horizontal));
         animator.SetBool("run",run);
-        animator.SetBool("crouch",crouch);
+        
+        if (onGround)
+        {
+            animator.SetFloat("speed",Mathf.Abs(_horizontal));
+            animator.SetBool("crouch",crouch);
+        }
     }
 
     void Move(float _horizontal, float _vertical)
@@ -97,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && rigidBody.velocity.y < 0)
         {
             onGround = true;
             jump = false;
@@ -106,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && rigidBody.velocity.y > 0)
         {
             onGround = false;
         }
