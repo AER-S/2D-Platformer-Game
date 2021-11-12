@@ -147,10 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4832908076523182247}
-  rigidBody: {fileID: 0}
-  walkSpeed: 2
+  rigidBody: {fileID: 1029736405}
+  walkSpeed: 2.5
   runFactor: 2
-  jumpPower: 2
+  jumpPower: 4
 --- !u!50 &1029736405
 Rigidbody2D:
   serializedVersion: 4
@@ -171,4 +171,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
