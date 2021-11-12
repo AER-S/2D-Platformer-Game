@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.SpriteAssetUtilities;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float runFactor = 2f;
     [SerializeField] private float jumpPower = 2f;
+    [SerializeField] private ScoreController score;
 
     private bool run;
     private bool jump;
@@ -120,5 +118,11 @@ public class PlayerController : MonoBehaviour
         {
             onGround = false;
         }
+    }
+
+    public void PickUp()
+    {
+        Debug.Log("Player picked up a key");
+        score.UpdatScore(100);
     }
 }
