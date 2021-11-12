@@ -53,9 +53,13 @@ public class PlayerController : MonoBehaviour
             jump = true;
         }
         
-        animator.SetFloat("speed",Mathf.Abs(_horizontal));
         animator.SetBool("run",run);
-        animator.SetBool("crouch",crouch);
+        
+        if (onGround)
+        {
+            animator.SetFloat("speed",Mathf.Abs(_horizontal));
+            animator.SetBool("crouch",crouch);
+        }
     }
 
     void Move(float _horizontal, float _vertical)
