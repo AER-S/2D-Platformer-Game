@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && rigidBody.velocity.y < 0)
         {
             onGround = true;
             jump = false;
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && rigidBody.velocity.y > 0)
         {
             onGround = false;
         }
