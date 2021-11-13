@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
         else if (backward && Mathf.Abs(velocity.x)<0.02f)
         {
             backward = false;
+            hurt = false;
         }
     }
 
