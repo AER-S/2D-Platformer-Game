@@ -48,6 +48,10 @@ public class EnemyController : MonoBehaviour
                 {
                     walkAnimation();
                 }
+                else if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) 
+                {
+                    IdleAnimation();
+                }
                 else
                 {
                     idleCounter += Time.deltaTime;
