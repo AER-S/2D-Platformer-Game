@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool crouch;
     private bool onGround;
     private bool hurt;
+    private bool backward;
     private bool dead;
     
     
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         onGround = false;
 
         dead = false;
+        backward = false;
 
     }
 
@@ -80,34 +82,56 @@ public class PlayerController : MonoBehaviour
     void Move(float _horizontal, float _vertical)
     {
 
-        if (onGround)
+        if (!dead && !hurt)
         {
-            if (!crouch)
+            if (onGround)
             {
-                float speed = Mathf.Abs(_horizontal);
-                float xMovingSpeed = Mathf.Abs(rigidBody.velocity.x);
-                float desiredSpeed = (run)? (walkSpeed*runFactor):walkSpeed;
-                if (speed>0.2f && xMovingSpeed<desiredSpeed)
+                if (!crouch)
                 {
-                    rigidBody.velocity = Vector2.right * (_horizontal * desiredSpeed);
+                    float speed = Mathf.Abs(_horizontal);
+                    float xMovingSpeed = Mathf.Abs(rigidBody.velocity.x);
+                    float desiredSpeed = (run)? (walkSpeed*runFactor):walkSpeed;
+                    if (speed>0.2f && xMovingSpeed<desiredSpeed)
+                    {
+                        rigidBody.velocity = Vector2.right * (_horizontal * desiredSpeed);
+                    }
+                    else if (speed<0.2f)
+                    {
+                        StopPlayer();
+                    }
+
+                    if (_vertical>0)
+                    {
+                        Vector2 newJump = new Vector2(rigidBody.velocity.x, jumpPower);
+                        rigidBody.velocity = newJump;
+                    }
                 }
-                else if (speed<0.2f)
+                else
                 {
                     StopPlayer();
                 }
-
-                if (_vertical>0)
-                {
-                    Vector2 newJump = new Vector2(rigidBody.velocity.x, jumpPower);
-                    rigidBody.velocity = newJump;
-                }
-            }
-            else
-            {
-                StopPlayer();
             }
         }
+        else
+        {
+            GoBackward();
+        }
         
+    }
+
+    void GoBackward()
+    {
+        Vector2 velocity = rigidBody.velocity;
+        if (!backward)
+        {
+            Vector2 backwardMovement = new Vector2(-velocity.x, (velocity.y>0)? 0:velocity.y);
+            rigidBody.velocity = backwardMovement;
+            backward = true;
+        }
+        else if (backward && Mathf.Abs(velocity.x)<0.02f)
+        {
+            backward = false;
+        }
     }
 
     void StopPlayer()
