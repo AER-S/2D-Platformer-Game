@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private bool jump;
     private bool crouch;
     private bool onGround;
+    private bool hurt;
+    private bool dead;
     
     
     // Start is called before the first frame update
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
         jump = false;
         run = false;
         crouch = false;
+        dead = false;
     }
 
     // Update is called once per frame
@@ -33,29 +36,43 @@ public class PlayerController : MonoBehaviour
 
     void Animate(float _horizontal, float _vertical)
     {
-        
-        if (Mathf.Abs(_horizontal) > 0.2f)
-        {
-            transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
-        }
 
-        if (_vertical>0 && onGround && !jump)
+        if (!dead)
         {
-            animator.SetTrigger("jump");
-            jump = true;
-        }
+            if (Mathf.Abs(_horizontal) > 0.2f)
+            {
+                transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
+            }
+
+            if (_vertical>0 && onGround && !jump)
+            {
+                animator.SetTrigger("jump");
+                jump = true;
+            }
         
-        animator.SetBool("run",run);
+            animator.SetBool("run",run);
         
-        if (onGround)
-        {
-            animator.SetFloat("speed",Mathf.Abs(_horizontal));
-            animator.SetBool("crouch",crouch);
-        }
-        else
-        {
-            animator.SetFloat("speed", 0f);
+            if (onGround)
+            {
+                animator.SetFloat("speed",Mathf.Abs(_horizontal));
+                animator.SetBool("crouch",crouch);
+            }
+            else
+            {
+                animator.SetFloat("speed", 0f);
             
+            }
         }
+    }
+
+    public void Hurt()
+    {
+        animator.SetTrigger("hurt");
+    }
+
+    public void Die()
+    {
+        animator.SetTrigger("die");
+        dead = true;
     }
 }
