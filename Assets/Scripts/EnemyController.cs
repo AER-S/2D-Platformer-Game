@@ -107,7 +107,7 @@ public class EnemyController : MonoBehaviour
     {
         if (walking)
         {
-            float direction = Mathf.Abs(GetTargetDistance());
+            float direction = Mathf.Sign(GetTargetDistance());
             transform.rotation = Quaternion.Euler(0f, 90-direction*90,0f);
             rigidBody.velocity = Vector2.right * (direction * walkSpeed);
         }
