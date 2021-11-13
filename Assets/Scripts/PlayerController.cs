@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool hurt;
     private bool backward;
     private bool dead;
-    
+    private int hearts;
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         hurt = false;
         dead = false;
         backward = false;
+        hearts = 3;
 
     }
 
@@ -126,7 +127,7 @@ public class PlayerController : MonoBehaviour
             rigidBody.velocity = backwardMovement;
             backward = true;
         }
-        else if (backward && Mathf.Abs(velocity.x)<0.002f)
+        else if (backward && Mathf.Abs(velocity.x)<0.02f)
         {
             backward = false;
             hurt = false;
@@ -154,15 +155,8 @@ public class PlayerController : MonoBehaviour
             onGround = false;
         }
     }
-
-
-    public void PickUp(int _score)
-    {
-        Debug.Log("Player picked up a key");
-        score.UpdatScore(_score);
-    }
-
-    public void Hurt()
+    
+    private void Hurt()
     {
         if (!hurt)
         {
@@ -172,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Die()
+    private void Die()
     {
         if (!dead)
         {
@@ -181,4 +175,24 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    public void PickUp(int _score)
+    {
+        Debug.Log("Player picked up a key");
+        score.UpdatScore(_score);
+    }
+
+    public void ReduceHealth()
+    {
+        if (hearts>0)
+        {
+            hearts--;
+            Hurt();
+        }
+        else
+        {
+            Die();
+        }
+    }
+
 }

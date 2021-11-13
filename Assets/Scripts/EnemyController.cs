@@ -126,7 +126,7 @@ public class EnemyController : MonoBehaviour
         {
             AttackAnimation();
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
-            player.Hurt();
+            player.ReduceHealth();
         }
     }
 }
