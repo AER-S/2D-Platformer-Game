@@ -117,5 +117,14 @@ public class EnemyController : MonoBehaviour
     {
         return (target.position.x - transform.position.x);
     }
-    
+
+    private void OnCollisionEnter2D(Collision other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>())
+        {
+            AttackAnimation();
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            player.Hurt();
+        }
+    }
 }
