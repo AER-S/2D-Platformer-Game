@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         jump = false;
         run = false;
         crouch = false;
+        hurt = false;
         dead = false;
     }
 
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
     void Animate(float _horizontal, float _vertical)
     {
 
-        if (!dead)
+        if (!dead && !hurt)
         {
             if (Mathf.Abs(_horizontal) > 0.2f)
             {
@@ -73,6 +74,5 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         animator.SetTrigger("die");
-        dead = true;
     }
 }
