@@ -28,8 +28,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
-<<<<<<< HEAD
-=======
 --- !u!1101 &-8281697394334037853
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -55,7 +53,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
->>>>>>> Feature_2_PlayerController
 --- !u!1102 &-7864397144724170779
 AnimatorState:
   serializedVersion: 6
@@ -203,8 +200,6 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 321452075434394085}
-<<<<<<< HEAD
-=======
 --- !u!1102 &-3499305080747146942
 AnimatorState:
   serializedVersion: 6
@@ -231,7 +226,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
->>>>>>> Feature_2_PlayerController
 --- !u!1101 &-2806724725673475102
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -319,8 +313,6 @@ AnimatorController:
   - m_Name: speed
     m_Type: 1
     m_DefaultFloat: 0.5
-<<<<<<< HEAD
-=======
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -333,7 +325,6 @@ AnimatorController:
   - m_Name: crouch
     m_Type: 4
     m_DefaultFloat: 0
->>>>>>> Feature_2_PlayerController
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -396,8 +387,6 @@ AnimatorState:
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!1101 &1368793183652773348
-<<<<<<< HEAD
-=======
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -472,7 +461,6 @@ AnimatorState:
   m_CycleOffsetParameter: 
   m_TimeParameter: 
 --- !u!1101 &3792021922349764448
->>>>>>> Feature_2_PlayerController
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -524,11 +512,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
-<<<<<<< HEAD
---- !u!1101 &3792021922349764448
-=======
 --- !u!1101 &4975498853968707520
->>>>>>> Feature_2_PlayerController
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -536,19 +520,11 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-<<<<<<< HEAD
-  - m_ConditionMode: 1
-    m_ConditionEvent: run
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -7864397144724170779}
-=======
   - m_ConditionMode: 2
     m_ConditionEvent: crouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 321452075434394085}
->>>>>>> Feature_2_PlayerController
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
