@@ -7,11 +7,14 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float idleTime;
+    [SerializeField] private Transform[] roadPoints;
     private Animator animator;
     private bool attack;
     private bool walking;
     private bool targetReached;
     private float idleCounter;
+    private Transform target;
+    
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -20,11 +23,15 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         attack = false;
+        target = roadPoints[0];
+        targetReached = Mathf.Abs(GetTargetDistance()) < 0.02f;
+        walking = true;
     }
 
     private void FixedUpdate()
     {
         Animate();
+        Move();
     }
 
     void Animate()
@@ -74,6 +81,19 @@ public class EnemyController : MonoBehaviour
             attack = false;
         }
     }
-    
+
+    void Move()
+    {
+        if (!attack)
+        {
+            
+        }
+        
+    }
+
+    float GetTargetDistance()
+    {
+        return (target.position.x - transform.position.x);
+    }
     
 }
