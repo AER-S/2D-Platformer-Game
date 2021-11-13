@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runFactor = 2f;
     [SerializeField] private float jumpPower = 2f;
     [SerializeField] private ScoreController score;
+    [SerializeField] private float repel = 3;
 
     private bool run;
     private bool jump;
@@ -121,11 +122,11 @@ public class PlayerController : MonoBehaviour
         Vector2 velocity = rigidBody.velocity;
         if (!backward)
         {
-            Vector2 backwardMovement = new Vector2(-velocity.x, (velocity.y>0)? 0:velocity.y);
+            Vector2 backwardMovement = new Vector2(-repel*velocity.x, (velocity.y>0)? 0:velocity.y);
             rigidBody.velocity = backwardMovement;
             backward = true;
         }
-        else if (backward && Mathf.Abs(velocity.x)<0.02f)
+        else if (backward && Mathf.Abs(velocity.x)<0.002f)
         {
             backward = false;
             hurt = false;
