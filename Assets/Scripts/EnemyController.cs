@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
 
     void Animate()
     {
+        attack = animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
         if (!attack)
         {
             if (walking)
@@ -74,11 +75,8 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetTrigger("attack");
             attack = true;
-        }
-        else if (attack && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            IdleAnimation();
-            attack = false;
+            walking = false;
+            idleCounter = 0;
         }
     }
     
