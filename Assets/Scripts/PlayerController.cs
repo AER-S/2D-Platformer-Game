@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.SpriteAssetUtilities;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -27,13 +24,8 @@ public class PlayerController : MonoBehaviour
         jump = false;
         run = false;
         crouch = false;
-
-
         onGround = false;
-
-
         hurt = false;
-
         dead = false;
         backward = false;
 
@@ -168,6 +160,5 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         animator.SetTrigger("die");
-
     }
 }
