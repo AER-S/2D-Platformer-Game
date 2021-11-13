@@ -68,11 +68,20 @@ public class PlayerController : MonoBehaviour
 
     public void Hurt()
     {
-        animator.SetTrigger("hurt");
+        if (!hurt)
+        {
+            animator.SetTrigger("hurt");
+            hurt = true;
+        }
+
     }
 
     public void Die()
     {
-        animator.SetTrigger("die");
+        if (!dead)
+        {
+            animator.SetTrigger("die");
+            dead = true;
+        }
     }
 }
