@@ -9,14 +9,15 @@ public class EnemyController : MonoBehaviour
     
     [SerializeField] private Transform[] roadPoints;
     [SerializeField] private float idleTime = 3f;
+    [SerializeField] private float walkSpeed = 2f;
     private Animator animator;
     private Rigidbody2D rigidBody;
-    
     private bool attack;
     private bool walking;
     private bool targetReached;
     private float idleCounter;
     private Transform target;
+    private int index;
     
     private void Awake()
     {
@@ -28,12 +29,24 @@ public class EnemyController : MonoBehaviour
     {
         attack = false;
         target = roadPoints[0];
+        index = 0;
         targetReached = Mathf.Abs(GetTargetDistance()) < 0.02f;
         walking = true;
     }
 
     private void FixedUpdate()
     {
+        targetReached = MathF.Abs(GetTargetDistance()) < 0.02f;
+        if (targetReached)
+        {
+            index++;
+            if (index==roadPoints.Length)
+            {
+                index = 0;
+            }
+
+            target = roadPoints[index];
+        }
         Animate();
         Move();
     }
@@ -92,14 +105,12 @@ public class EnemyController : MonoBehaviour
 
     void Move()
     {
-        if (!attack)
+        if (walking)
         {
-            if (walking)
-            {
-                transform.rotation = Quaternion.Euler(0f, 90-Mathf.Sign(GetTargetDistance())*90,0f);
-            }
+            float direction = Mathf.Abs(GetTargetDistance());
+            transform.rotation = Quaternion.Euler(0f, 90-direction*90,0f);
+            rigidBody.velocity = Vector2.right * (direction * walkSpeed);
         }
-        
     }
 
     float GetTargetDistance()
