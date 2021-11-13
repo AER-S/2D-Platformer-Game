@@ -154,12 +154,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
+
     public void PickUp(int _score)
     {
         Debug.Log("Player picked up a key");
         score.UpdatScore(_score);
-=======
+    }
+
     public void Hurt()
     {
         if (!hurt)
@@ -177,6 +178,6 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("die");
             dead = true;
         }
->>>>>>> Feature_3_Movement
+
     }
 }

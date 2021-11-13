@@ -312,16 +312,7 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: speed
     m_Type: 1
-<<<<<<< HEAD
-    m_DefaultFloat: 0
-=======
     m_DefaultFloat: 0.5
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Feature_3_Movement
-=======
->>>>>>> Feature_3_Movement
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
