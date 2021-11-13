@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private bool jump;
     private bool crouch;
     private bool onGround;
+    private bool hurt;
+    private bool backward;
+    private bool dead;
     
     
     // Start is called before the first frame update
@@ -23,6 +26,10 @@ public class PlayerController : MonoBehaviour
         run = false;
         crouch = false;
         onGround = false;
+        hurt = false;
+        dead = false;
+        backward = false;
+
     }
 
     // Update is called once per frame
@@ -39,63 +46,90 @@ public class PlayerController : MonoBehaviour
 
     void Animate(float _horizontal, float _vertical)
     {
-        
-        if (Mathf.Abs(_horizontal) > 0.2f)
-        {
-            transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
-        }
 
-        if (_vertical>0 && onGround && !jump)
+        if (!dead && !hurt)
         {
-            animator.SetTrigger("jump");
-            jump = true;
-        }
+            if (Mathf.Abs(_horizontal) > 0.2f)
+            {
+                transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
+            }
+
+            if (_vertical>0 && onGround && !jump)
+            {
+                animator.SetTrigger("jump");
+                jump = true;
+            }
         
-        animator.SetBool("run",run);
+            animator.SetBool("run",run);
         
-        if (onGround)
-        {
-            animator.SetFloat("speed",Mathf.Abs(_horizontal));
-            animator.SetBool("crouch",crouch);
-        }
-        else
-        {
-            animator.SetFloat("speed", 0f);
+            if (onGround)
+            {
+                animator.SetFloat("speed",Mathf.Abs(_horizontal));
+                animator.SetBool("crouch",crouch);
+            }
+            else
+            {
+                animator.SetFloat("speed", 0f);
             
+            }
         }
     }
+
 
     void Move(float _horizontal, float _vertical)
     {
 
-        if (onGround)
+        if (!dead && !hurt)
         {
-            if (!crouch)
+            if (onGround)
             {
-                float speed = Mathf.Abs(_horizontal);
-                float xMovingSpeed = Mathf.Abs(rigidBody.velocity.x);
-                float desiredSpeed = (run)? (walkSpeed*runFactor):walkSpeed;
-                if (speed>0.2f && xMovingSpeed<desiredSpeed)
+                if (!crouch)
                 {
-                    rigidBody.velocity = Vector2.right * (_horizontal * desiredSpeed);
+                    float speed = Mathf.Abs(_horizontal);
+                    float xMovingSpeed = Mathf.Abs(rigidBody.velocity.x);
+                    float desiredSpeed = (run)? (walkSpeed*runFactor):walkSpeed;
+                    if (speed>0.2f && xMovingSpeed<desiredSpeed)
+                    {
+                        rigidBody.velocity = Vector2.right * (_horizontal * desiredSpeed);
+                    }
+                    else if (speed<0.2f)
+                    {
+                        StopPlayer();
+                    }
+
+                    if (_vertical>0)
+                    {
+                        Vector2 newJump = new Vector2(rigidBody.velocity.x, jumpPower);
+                        rigidBody.velocity = newJump;
+                    }
                 }
-                else if (speed<0.2f)
+                else
                 {
                     StopPlayer();
                 }
-
-                if (_vertical>0)
-                {
-                    Vector2 newJump = new Vector2(rigidBody.velocity.x, jumpPower);
-                    rigidBody.velocity = newJump;
-                }
-            }
-            else
-            {
-                StopPlayer();
             }
         }
+        else
+        {
+            GoBackward();
+        }
         
+    }
+
+    void GoBackward()
+    {
+        Vector2 velocity = rigidBody.velocity;
+        if (!backward)
+        {
+            Vector2 backwardMovement = new Vector2(-velocity.x, (velocity.y>0)? 0:velocity.y);
+            rigidBody.velocity = backwardMovement;
+            backward = true;
+        }
+        else if (backward && Mathf.Abs(velocity.x)<0.02f)
+        {
+            backward = false;
+            hurt = false;
+        }
     }
 
     void StopPlayer()
@@ -120,9 +154,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     public void PickUp(int _score)
     {
         Debug.Log("Player picked up a key");
         score.UpdatScore(_score);
+=======
+    public void Hurt()
+    {
+        if (!hurt)
+        {
+            animator.SetTrigger("hurt");
+            hurt = true;
+        }
+
+    }
+
+    public void Die()
+    {
+        if (!dead)
+        {
+            animator.SetTrigger("die");
+            dead = true;
+        }
+>>>>>>> Feature_3_Movement
     }
 }
