@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float idleTime;
+    [SerializeField] private float idleTime = 3f;
     private Animator animator;
     private bool attack;
     private bool walking;
@@ -43,6 +43,10 @@ public class EnemyController : MonoBehaviour
                 if (idleCounter>idleTime)
                 {
                     walkAnimation();
+                }
+                else
+                {
+                    idleCounter += Time.deltaTime;
                 }
             }
         }
