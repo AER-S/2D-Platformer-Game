@@ -26,11 +26,11 @@ public class PlayerController : MonoBehaviour
         jump = false;
         run = false;
         crouch = false;
-<<<<<<< HEAD
+
         onGround = false;
-=======
+
         dead = false;
->>>>>>> Feature_2_PlayerController
+
     }
 
     // Update is called once per frame
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
+
     void Move(float _horizontal, float _vertical)
     {
 
@@ -130,7 +130,8 @@ public class PlayerController : MonoBehaviour
         {
             onGround = false;
         }
-=======
+    }
+
     public void Hurt()
     {
         animator.SetTrigger("hurt");
@@ -140,6 +141,6 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetTrigger("die");
         dead = true;
->>>>>>> Feature_2_PlayerController
+
     }
 }
