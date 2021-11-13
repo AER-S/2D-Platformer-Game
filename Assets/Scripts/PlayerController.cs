@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
             rigidBody.velocity = backwardMovement;
             backward = true;
         }
-        else if (backward && Mathf.Abs(velocity.x)<0.02f)
+        else if (backward && Mathf.Abs(velocity.x)<0.002f)
         {
             backward = false;
             hurt = false;

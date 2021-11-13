@@ -116,7 +116,7 @@ public class EnemyController : MonoBehaviour
         return (target.position.x - transform.position.x);
     }
 
-    private void OnCollisionEnter2D(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
