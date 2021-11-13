@@ -6,8 +6,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+<<<<<<< HEAD
     [SerializeField] private float idleTime;
     [SerializeField] private Transform[] roadPoints;
+=======
+    [SerializeField] private float idleTime = 3f;
+>>>>>>> Feature_2_PlayerController
     private Animator animator;
     private bool attack;
     private bool walking;
@@ -50,6 +54,10 @@ public class EnemyController : MonoBehaviour
                 if (idleCounter>idleTime)
                 {
                     walkAnimation();
+                }
+                else
+                {
+                    idleCounter += Time.deltaTime;
                 }
             }
         }
