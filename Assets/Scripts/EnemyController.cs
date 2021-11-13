@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private float idleTime;
     private Animator animator;
     private bool attack;
+    private bool walking;
+    private bool targetReached;
+    private float idleCounter;
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -17,14 +22,43 @@ public class EnemyController : MonoBehaviour
         attack = false;
     }
 
+    private void FixedUpdate()
+    {
+        Animate();
+    }
+
+    void Animate()
+    {
+        if (!attack)
+        {
+            if (walking)
+            {
+                if (targetReached)
+                {
+                    IdleAnimation();
+                }
+            }
+            else
+            {
+                if (idleCounter>idleTime)
+                {
+                    walkAnimation();
+                }
+            }
+        }
+    }
+
     void walkAnimation()
     {
-       animator.SetBool("stop",false); 
+       animator.SetBool("stop",false);
+       walking = true;
     }
 
     void IdleAnimation()
     {
         animator.SetBool("stop", true);
+        walking = false;
+        idleCounter = 0;
     }
 
     void AttackAnimation()
@@ -36,6 +70,7 @@ public class EnemyController : MonoBehaviour
         }
         else if (attack && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
+            IdleAnimation();
             attack = false;
         }
     }
