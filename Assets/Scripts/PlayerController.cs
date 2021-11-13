@@ -27,13 +27,13 @@ public class PlayerController : MonoBehaviour
         jump = false;
         run = false;
         crouch = false;
-<<<<<<< HEAD
+
 
         onGround = false;
 
-=======
+
         hurt = false;
->>>>>>> Feature_2_PlayerController
+
         dead = false;
         backward = false;
 
@@ -168,10 +168,6 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         animator.SetTrigger("die");
-<<<<<<< HEAD
-        dead = true;
 
-=======
->>>>>>> Feature_2_PlayerController
     }
 }
