@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform[] roadPoints;
     [SerializeField] private float idleTime = 3f;
     private Animator animator;
+    private Rigidbody2D rigidBody;
+    
     private bool attack;
     private bool walking;
     private bool targetReached;
@@ -19,6 +21,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     private void Start()
