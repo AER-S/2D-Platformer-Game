@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower = 2f;
     [SerializeField] private ScoreController score;
     [SerializeField] private float repel = 3;
+    [SerializeField] private HeartController heartController;
 
     private bool run;
     private bool jump;
@@ -184,9 +185,10 @@ public class PlayerController : MonoBehaviour
 
     public void ReduceHealth()
     {
+        hearts--;
+        heartController.UpdateHearts(hearts);
         if (hearts>0)
         {
-            hearts--;
             Hurt();
         }
         else
