@@ -518,7 +518,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6206965989506428377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5457026790220014002}
+        m_TargetAssemblyTypeName: LobbyController, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3445995909858906304
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +750,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 38576018946991133}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5457026790220014002}
+        m_TargetAssemblyTypeName: LobbyController, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6314049572307678739
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +885,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3800844929197698494}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5457026790220014002}
+        m_TargetAssemblyTypeName: LobbyController, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6899434217063735581
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +909,7 @@ GameObject:
   - component: {fileID: 5220540218935308087}
   - component: {fileID: 5182574567388802933}
   - component: {fileID: 2278950562219204450}
+  - component: {fileID: 5457026790220014002}
   m_Layer: 5
   m_Name: LobbyPanel
   m_TagString: Untagged
@@ -939,6 +976,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5457026790220014002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6899434217063735581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6703257a61ff842b57d5f9b5c423fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7759863926893400693
 GameObject:
   m_ObjectHideFlags: 0
