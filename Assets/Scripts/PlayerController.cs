@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -194,7 +196,17 @@ public class PlayerController : MonoBehaviour
         else
         {
             Die();
+            gameObject.layer= 6;
+            StartCoroutine("RestartLevel");
         }
+
+        
+    }
+
+    IEnumerator RestartLevel()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

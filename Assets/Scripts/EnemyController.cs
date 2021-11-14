@@ -126,6 +126,7 @@ public class EnemyController : MonoBehaviour
         {
             AttackAnimation();
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
+            transform.rotation = Quaternion.Euler(0f, 90-Mathf.Sign(player.transform.position.x-transform.position.x)*90f,0f);
             player.ReduceHealth();
         }
     }
