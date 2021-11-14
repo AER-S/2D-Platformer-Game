@@ -91,7 +91,8 @@ public class PlayerController : MonoBehaviour
                     float desiredSpeed = (run)? (walkSpeed*runFactor):walkSpeed;
                     if (speed>0.2f && xMovingSpeed<desiredSpeed)
                     {
-                        rigidBody.velocity = Vector2.right * (_horizontal * desiredSpeed);
+                        Vector2 newMove = new Vector2(_horizontal * desiredSpeed, rigidBody.velocity.y);
+                        rigidBody.velocity = newMove;
                     }
                     else if (speed<0.2f)
                     {
