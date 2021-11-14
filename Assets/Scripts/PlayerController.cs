@@ -140,9 +140,10 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = Vector2.zero;
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (Math.Abs(rigidBody.velocity.y) < 0.2f)
+        RaycastHit2D ground = Physics2D.BoxCast(transform.position, new Vector2(0.67f, 1f), 0f, Vector2.down, 0.05f);
+        if (ground)
         {
             onGround = true;
             jump = false;

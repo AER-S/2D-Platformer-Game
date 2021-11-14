@@ -168,3 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4832908076523182247}
+  rigidBody: {fileID: 7163196259104154084}
+  walkSpeed: 2
+  runFactor: 2
+  jumpPower: 2
+  score: {fileID: 0}
+  repel: 3
