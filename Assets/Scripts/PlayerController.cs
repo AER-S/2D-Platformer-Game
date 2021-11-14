@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Animate(float _horizontal, float _vertical)
     {
-
+        animator.SetBool("onGround", onGround);
         if (!dead && !hurt)
         {
             if (Mathf.Abs(_horizontal) > 0.2f)
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
         
             if (onGround)
             {
+                
                 animator.SetFloat("speed",Mathf.Abs(_horizontal));
                 animator.SetBool("crouch",crouch);
             }
