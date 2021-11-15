@@ -6437,6 +6437,16 @@ PrefabInstance:
       propertyPath: heartController
       value: 
       objectReference: {fileID: 1803355442}
+    - target: {fileID: 2490516955027568069, guid: ec127cb92120ff74a9ee227c81646302,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 679313357}
+    - target: {fileID: 2490516955027568069, guid: ec127cb92120ff74a9ee227c81646302,
+        type: 3}
+      propertyPath: heartController
+      value: 
+      objectReference: {fileID: 1803355442}
     - target: {fileID: 4764879087256535336, guid: ec127cb92120ff74a9ee227c81646302,
         type: 3}
       propertyPath: m_RootOrder
@@ -6496,6 +6506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666537759458099036, guid: ec127cb92120ff74a9ee227c81646302,
+        type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec127cb92120ff74a9ee227c81646302, type: 3}

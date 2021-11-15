@@ -51,24 +51,18 @@ public class PlayerController : MonoBehaviour
 
     void Animate(float _horizontal, float _vertical)
     {
-
+        
         if (!dead && !hurt)
         {
             if (Mathf.Abs(_horizontal) > 0.2f)
             {
                 transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
             }
-
-            if (_vertical>0 && onGround && !jump)
-            {
-                animator.SetTrigger("jump");
-                jump = true;
-            }
-        
             animator.SetBool("run",run);
         
             if (onGround)
             {
+                animator.SetBool("jump",false);
                 animator.SetFloat("speed",Mathf.Abs(_horizontal));
                 animator.SetBool("crouch",crouch);
             }
@@ -76,6 +70,12 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetFloat("speed", 0f);
             
+            }
+            if (_vertical>0 && onGround && !jump)
+            {
+                jump = true;
+                animator.SetBool("jump",true);
+                             
             }
         }
     }
@@ -143,9 +143,10 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = Vector2.zero;
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (Math.Abs(rigidBody.velocity.y) < 0.2f)
+        RaycastHit2D ground = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 1f), 0f, Vector2.down, 0.05f);
+        if (ground)
         {
             onGround = true;
             jump = false;

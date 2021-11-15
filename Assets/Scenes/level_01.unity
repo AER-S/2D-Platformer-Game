@@ -5699,6 +5699,16 @@ PrefabInstance:
       propertyPath: heartController
       value: 
       objectReference: {fileID: 1828762394}
+    - target: {fileID: 2490516955027568069, guid: ec127cb92120ff74a9ee227c81646302,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1760313687}
+    - target: {fileID: 2490516955027568069, guid: ec127cb92120ff74a9ee227c81646302,
+        type: 3}
+      propertyPath: heartController
+      value: 
+      objectReference: {fileID: 1828762394}
     - target: {fileID: 4764879087256535336, guid: ec127cb92120ff74a9ee227c81646302,
         type: 3}
       propertyPath: m_RootOrder
