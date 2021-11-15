@@ -199,16 +199,16 @@ public class PlayerController : MonoBehaviour
         {
             Die();
             gameObject.layer= 6;
-            StartCoroutine("RestartLevel");
+            StartCoroutine(LoseLevel());
         }
 
         
     }
 
-    IEnumerator RestartLevel()
+    IEnumerator LoseLevel()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LevelController.instance.GameOverPanel();
     }
 
 }
