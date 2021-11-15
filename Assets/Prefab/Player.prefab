@@ -154,7 +154,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.6758106, y: 2.102262}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.005
 --- !u!114 &2490516955027568069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,4 +173,5 @@ MonoBehaviour:
   runFactor: 2
   jumpPower: 10
   score: {fileID: 0}
-  repel: 3
+  repel: 1
+  heartController: {fileID: 0}

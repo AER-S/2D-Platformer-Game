@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        RaycastHit2D ground = Physics2D.BoxCast(transform.position, new Vector2(0.67f, 1f), 0f, Vector2.down, 0.05f);
+        RaycastHit2D ground = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 1f), 0f, Vector2.down, 0.05f);
         if (ground)
         {
             onGround = true;
