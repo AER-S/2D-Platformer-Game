@@ -7,15 +7,23 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private ScoreController score;
+    [SerializeField] private BoxCollider2D boxCollider2D;
+    [SerializeField] private Transform bottomLine;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float runFactor = 2f;
     [SerializeField] private float jumpPower = 2f;
+<<<<<<< HEAD
     [SerializeField] private ScoreController score;
     [SerializeField] private float repel = 3;
 <<<<<<< HEAD
     [SerializeField] private HeartController heartController;
 =======
     [SerializeField] private Transform bottomLine;
+>>>>>>> Feature_3_Movement
+=======
+    [SerializeField] private float repel = 3f;
 >>>>>>> Feature_3_Movement
 
     private bool run;
@@ -27,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private bool dead;
     private int hearts;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,9 +159,13 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         RaycastHit2D ground = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 1f), 0f, Vector2.down, 0.05f);
 =======
         RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(0.5f, 0.001f), 0f, Vector2.down, 0.05f);
+>>>>>>> Feature_3_Movement
+=======
+        RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(boxCollider2D.bounds.size.x *0.8f, 0.001f), 0f, Vector2.down, 0.05f,groundLayer);
 >>>>>>> Feature_3_Movement
         if (ground)
         {

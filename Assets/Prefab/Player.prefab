@@ -155,7 +155,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -201,9 +201,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4832908076523182247}
   rigidBody: {fileID: 7163196259104154084}
+  score: {fileID: 0}
+  boxCollider2D: {fileID: 8666537759458099036}
+  bottomLine: {fileID: 4870402082739292712}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   walkSpeed: 2
   runFactor: 2
-  jumpPower: 2
-  score: {fileID: 0}
-  repel: 3
-  bottomLine: {fileID: 4870402082739292712}
+  jumpPower: 10
+  repel: 1.5
