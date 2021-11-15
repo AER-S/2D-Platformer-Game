@@ -2999,7 +2999,7 @@ GameObject:
   - component: {fileID: 601763824}
   - component: {fileID: 601763823}
   - component: {fileID: 601763825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5660,7 +5660,7 @@ GameObject:
   - component: {fileID: 1989155599}
   - component: {fileID: 1989155598}
   - component: {fileID: 1989155600}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6708,6 +6708,11 @@ PrefabInstance:
       propertyPath: heartController
       value: 
       objectReference: {fileID: 1803355442}
+    - target: {fileID: 2490516955027568069, guid: ec127cb92120ff74a9ee227c81646302,
+        type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 4764879087256535336, guid: ec127cb92120ff74a9ee227c81646302,
         type: 3}
       propertyPath: m_RootOrder

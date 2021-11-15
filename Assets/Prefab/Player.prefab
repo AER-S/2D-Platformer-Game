@@ -186,7 +186,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.6758106, y: 2.102262}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.005
 --- !u!114 &2490516955027568069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,8 +206,9 @@ MonoBehaviour:
   bottomLine: {fileID: 4870402082739292712}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  walkSpeed: 2
+    m_Bits: 192
+  walkSpeed: 2.4
   runFactor: 2
   jumpPower: 10
   repel: 1.5
+  heartController: {fileID: 0}
