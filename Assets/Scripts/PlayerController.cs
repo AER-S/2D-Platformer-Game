@@ -5,12 +5,14 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private ScoreController score;
+    [SerializeField] private BoxCollider2D boxCollider2D;
+    [SerializeField] private Transform bottomLine;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float runFactor = 2f;
     [SerializeField] private float jumpPower = 2f;
-    [SerializeField] private ScoreController score;
-    [SerializeField] private float repel = 3;
-    [SerializeField] private Transform bottomLine;
+    [SerializeField] private float repel = 3f;
 
     private bool run;
     private bool jump;
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool dead;
     
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(0.5f, 0.001f), 0f, Vector2.down, 0.05f);
+        RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(boxCollider2D.bounds.size.x *0.8f, 0.001f), 0f, Vector2.down, 0.05f,groundLayer);
         if (ground)
         {
             onGround = true;
