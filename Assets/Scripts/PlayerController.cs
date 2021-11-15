@@ -54,18 +54,11 @@ public class PlayerController : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
             }
-
-            if (_vertical>0 && onGround && !jump)
-            {
-                animator.SetTrigger("jump");
-                jump = true;
-            }
-        
             animator.SetBool("run",run);
         
-            if (!jump)
+            if (onGround)
             {
-                
+                animator.SetBool("jump",false);
                 animator.SetFloat("speed",Mathf.Abs(_horizontal));
                 animator.SetBool("crouch",crouch);
             }
@@ -73,6 +66,12 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetFloat("speed", 0f);
             
+            }
+            if (_vertical>0 && onGround && !jump)
+            {
+                jump = true;
+                animator.SetBool("jump",true);
+                             
             }
         }
     }
