@@ -12,7 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower = 2f;
     [SerializeField] private ScoreController score;
     [SerializeField] private float repel = 3;
+<<<<<<< HEAD
     [SerializeField] private HeartController heartController;
+=======
+    [SerializeField] private Transform bottomLine;
+>>>>>>> Feature_3_Movement
 
     private bool run;
     private bool jump;
@@ -145,7 +149,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+<<<<<<< HEAD
         RaycastHit2D ground = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 1f), 0f, Vector2.down, 0.05f);
+=======
+        RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(0.5f, 0.001f), 0f, Vector2.down, 0.05f);
+>>>>>>> Feature_3_Movement
         if (ground)
         {
             onGround = true;
