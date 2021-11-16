@@ -2755,7 +2755,7 @@ GameObject:
   - component: {fileID: 601763824}
   - component: {fileID: 601763823}
   - component: {fileID: 601763825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4961,7 +4961,7 @@ GameObject:
   - component: {fileID: 1989155599}
   - component: {fileID: 1989155598}
   - component: {fileID: 1989155600}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Ground
   m_Icon: {fileID: 0}

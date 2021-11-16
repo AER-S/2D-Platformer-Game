@@ -8,6 +8,9 @@ public class HeartController : MonoBehaviour
 
     public void UpdateHearts(int _index)
     {
-        animators[_index].enabled = true;
+        if (_index>=0)
+        {
+            animators[_index].enabled = true;
+        }
     }
 }
