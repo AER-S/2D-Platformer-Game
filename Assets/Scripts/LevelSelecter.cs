@@ -26,4 +26,9 @@ public class LevelSelecter : MonoBehaviour
     {
         SceneManager.LoadScene(level);
     }
+
+    public bool CheckLock()
+    {
+        return (level <= ProfileController.Getunlocked());
+    }
 }

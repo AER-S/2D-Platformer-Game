@@ -10,7 +10,7 @@ public class FallingController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            LevelController.instance.GameOverPanel();
+            LevelController.Instance.GameOverPanel();
         }
     }
 }

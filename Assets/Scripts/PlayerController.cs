@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator LoseLevel()
     {
         yield return new WaitForSeconds(3);
-        LevelController.instance.GameOverPanel();
+        LevelController.Instance.GameOverPanel();
     }
 
 }

@@ -10,7 +10,7 @@ public class LevelOverController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            LevelController.instance.GoToNextLevel();
+            LevelController.Instance.GoToNextLevel();
         }
     }
 }

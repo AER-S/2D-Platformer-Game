@@ -7,7 +7,11 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
-    public static LevelController instance;
+    private static LevelController instance;
+    public  static LevelController Instance
+    {
+        get { return instance; }
+    }
     private int sceneIndex;
     
 
@@ -41,6 +45,8 @@ public class LevelController : MonoBehaviour
 
     public void GoToNextLevel()
     {
-        SceneManager.LoadScene(sceneIndex + 1);
+        int nextScene = sceneIndex + 1;
+        ProfileController.UpdateLocked(nextScene);
+        SceneManager.LoadScene(nextScene);
     }
 }

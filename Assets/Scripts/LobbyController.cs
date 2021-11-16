@@ -8,7 +8,9 @@ public class LobbyController : MonoBehaviour
     [SerializeField] private GameObject levelSlecter;
     public void StartGame()
     {
+        ProfileController.UpdateProfile();
         levelSlecter.SetActive(true);
+        levelSlecter.GetComponent<LevelSelecterPanel>().UpdateLocks();
         gameObject.SetActive(false);
     }
 
