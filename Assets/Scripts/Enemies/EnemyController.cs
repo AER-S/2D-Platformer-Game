@@ -21,22 +21,23 @@ public class EnemyController : MonoBehaviour
     
     private void Awake()
     {
-        animator = gameObject.GetComponent<Animator>();
-        rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        rigidBody =GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
         attack = false;
-        target = roadPoints[0];
-        index = 0;
-        targetReached = Mathf.Abs(GetTargetDistance()) < 0.02f;
+         index = 0;
+         target = roadPoints[index];
+       
+        targetReached = Mathf.Abs(GetTargetXDistance()) < 0.02f;
         walking = true;
     }
 
     private void FixedUpdate()
     {
-        targetReached = MathF.Abs(GetTargetDistance()) < 0.02f;
+        targetReached = MathF.Abs(GetTargetXDistance()) < 0.02f;
         if (targetReached)
         {
             index++;
@@ -75,7 +76,7 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
-                    idleCounter += Time.deltaTime;
+                    idleCounter += Time.fixedDeltaTime;
                 }
             }
         }
@@ -109,13 +110,13 @@ public class EnemyController : MonoBehaviour
     {
         if (walking)
         {
-            float direction = Mathf.Sign(GetTargetDistance());
+            float direction = Mathf.Sign(GetTargetXDistance());
             transform.rotation = Quaternion.Euler(0f, 90-direction*90,0f);
             rigidBody.velocity = Vector2.right * (direction * walkSpeed);
         }
     }
 
-    float GetTargetDistance()
+    float GetTargetXDistance()
     {
         return (target.position.x - transform.position.x);
     }

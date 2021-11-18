@@ -59,10 +59,7 @@ public class PlayerController : MonoBehaviour
         
         if (!dead && !hurt)
         {
-            if (Mathf.Abs(_horizontal) > 0.2f)
-            {
-                transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
-            }
+            GetDirection(_horizontal);
             animator.SetBool("run",run);
         
             if (onGround)
@@ -83,6 +80,20 @@ public class PlayerController : MonoBehaviour
                              
             }
         }
+    }
+
+    void GetDirection(float _horizontal)
+    {
+        if (Mathf.Abs(_horizontal) <= 0.2f)
+        {
+            return;
+        } 
+        transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
+        
+        // if (Mathf.Abs(_horizontal) > 0.2f)
+        // {
+        //     transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
+        // } 
     }
 
 
@@ -145,12 +156,12 @@ public class PlayerController : MonoBehaviour
 
     void StopPlayer()
     {
-        rigidBody.velocity = Vector2.zero;
+        rigidBody.velocity *= Vector2.up;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(boxCollider2D.bounds.size.x *0.8f, 0.001f), 0f, Vector2.down, 0.05f,groundLayer);
+        RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(boxCollider2D.bounds.size.x *0.98f, 0.001f), 0f, Vector2.down, 0.05f,groundLayer);
         if (ground)
         {
             onGround = true;

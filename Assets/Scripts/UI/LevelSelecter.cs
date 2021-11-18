@@ -31,4 +31,22 @@ public class LevelSelecter : MonoBehaviour
     {
         return (level <= ProfileController.Getunlocked());
     }
+
+    public void HandleUnlocking()
+    {
+        bool interactable= CheckLock();
+        button.interactable = interactable;
+        Color buttonColor = button.GetComponent<Image>().color;
+        if (!interactable && buttonColor==Color.white)
+        {
+            button.GetComponent<Image>().color=Color.gray;
+            button.GetComponent<ButtonAudioController>().enabled = false;
+        }
+
+        if (interactable && buttonColor==Color.gray)
+        {
+            buttonColor = Color.white;
+            button.GetComponent<ButtonAudioController>().enabled = true;
+        }
+    }
 }
