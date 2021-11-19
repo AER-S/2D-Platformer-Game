@@ -12,6 +12,15 @@ public enum UISound
     Back
 }
 
+public enum PlayerSound
+{
+    Walk,
+    Run,
+    Jump,
+    Land,
+    Hurt,
+    Die
+}
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;
@@ -87,7 +96,7 @@ public class AudioManager : MonoBehaviour
 
         return name;
     }
-    void PlaySound(string _name, Sound[] _sounds, AudioSource _source)
+    public void PlaySound(string _name, Sound[] _sounds, AudioSource _source)
     {
         Sound sound = Array.Find(_sounds, i => i.GetName() == _name);
         if (sound==null)
@@ -95,12 +104,24 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        _source.clip = sound.GetClip();
-        _source.volume = sound.GetVolume();
-        _source.pitch = sound.GetPitch();
-        _source.loop = sound.Getloop();
+        if (_source.clip!=sound.GetClip())
+        {
+            _source.clip = sound.GetClip();
+            _source.clip.name = sound.GetName();
+            _source.volume = sound.GetVolume();
+            _source.pitch = sound.GetPitch();
+            _source.loop = sound.Getloop();
+            _source.Play();
+            return;
+        }
+
+        if (_source.clip==sound.GetClip() && ((_source.loop &&!_source.isPlaying)||!_source.loop))
+        {
+            _source.Play();
+            return;
+        }
         
-        _source.Play();
+
     }
     
     

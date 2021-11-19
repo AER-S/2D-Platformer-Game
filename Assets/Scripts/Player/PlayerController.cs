@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower = 2f;
     [SerializeField] private float repel = 3f;
     [SerializeField] private HeartController heartController;
+    [SerializeField] private PlayerSoundsController soundsController;
     
 
     private bool run;
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
             {
                 jump = true;
                 animator.SetBool("jump",true);
-                             
+                soundsController.PlayPlayerSound(PlayerSound.Jump);
             }
         }
     }
@@ -90,10 +91,7 @@ public class PlayerController : MonoBehaviour
         } 
         transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
         
-        // if (Mathf.Abs(_horizontal) > 0.2f)
-        // {
-        //     transform.rotation = Quaternion.Euler(0f, 90 - Mathf.Sign(_horizontal) * 90, 0f);
-        // } 
+        
     }
 
 
@@ -109,12 +107,18 @@ public class PlayerController : MonoBehaviour
                     float speed = Mathf.Abs(_horizontal);
                     float xMovingSpeed = Mathf.Abs(rigidBody.velocity.x);
                     float desiredSpeed = (run)? (walkSpeed*runFactor):walkSpeed;
-                    if (speed>0.2f && xMovingSpeed<desiredSpeed)
+                    if (speed>0.2f)
                     {
-                        Vector2 newMove = new Vector2(_horizontal * desiredSpeed, rigidBody.velocity.y);
-                        rigidBody.velocity = newMove;
+                        soundsController.PlayPlayerSound(PlayerSound.Walk);
+
+                        if (xMovingSpeed<desiredSpeed)
+                        {
+                            Vector2 newMove = new Vector2(_horizontal * desiredSpeed, rigidBody.velocity.y);
+                            rigidBody.velocity = newMove;
+                        }
+                        
                     }
-                    else if (speed<0.2f)
+                    else 
                     {
                         StopPlayer();
                     }
@@ -129,6 +133,10 @@ public class PlayerController : MonoBehaviour
                 {
                     StopPlayer();
                 }
+            }
+            else
+            {
+                soundsController.StopSoundOnJump();
             }
         }
         else
@@ -157,6 +165,7 @@ public class PlayerController : MonoBehaviour
     void StopPlayer()
     {
         rigidBody.velocity *= Vector2.up;
+        soundsController.StopPlayingMovementSound();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -166,6 +175,7 @@ public class PlayerController : MonoBehaviour
         {
             onGround = true;
             jump = false;
+            soundsController.PlayPlayerSound(PlayerSound.Land);
         } 
     }
 
@@ -183,6 +193,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("hurt");
             hurt = true;
+            soundsController.PlayPlayerSound(PlayerSound.Hurt);
         }
 
     }
@@ -193,6 +204,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("die");
             dead = true;
+            soundsController.PlayPlayerSound(PlayerSound.Die);
         }
 
     }
