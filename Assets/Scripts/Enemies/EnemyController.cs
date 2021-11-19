@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform[] roadPoints;
     [SerializeField] private float idleTime = 3f;
     [SerializeField] private float walkSpeed = 2f;
+    private EnemySoundsController soundsController;
     private Animator animator;
     private Rigidbody2D rigidBody;
     private bool attack;
@@ -23,6 +24,7 @@ public class EnemyController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidBody =GetComponent<Rigidbody2D>();
+        soundsController = GetComponent<EnemySoundsController>();
     }
 
     private void Start()
@@ -91,6 +93,7 @@ public class EnemyController : MonoBehaviour
     void IdleAnimation()
     {
         animator.SetBool("stop", true);
+        soundsController.StopSounds();
         walking = false;
         idleCounter = 0;
     }
@@ -100,6 +103,7 @@ public class EnemyController : MonoBehaviour
         if (!attack)
         {
             animator.SetTrigger("attack");
+            soundsController.PlayEnemySound(EnemySound.Attack);
             attack = true;
             walking = false;
             idleCounter = 0;
@@ -113,6 +117,7 @@ public class EnemyController : MonoBehaviour
             float direction = Mathf.Sign(GetTargetXDistance());
             transform.rotation = Quaternion.Euler(0f, 90-direction*90,0f);
             rigidBody.velocity = Vector2.right * (direction * walkSpeed);
+            soundsController.PlayEnemySound(EnemySound.Walk);
         }
     }
 

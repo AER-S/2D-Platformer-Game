@@ -1703,6 +1703,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2efac6b1f1b3cb84f8090b80da4bf152, type: 3}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[0].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[0].name
+      value: Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 98660f6b09ff5c0469a3601564315ec0, type: 3}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[1].name
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[1].pitch
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984889135393825318, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: enemySounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8984889135393825319, guid: 8354bd5e9c6a78c40aa14c72d170391e,
         type: 3}
       propertyPath: m_RootOrder
@@ -1757,6 +1807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984889135716473887, guid: 8354bd5e9c6a78c40aa14c72d170391e,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8984889135716473887, guid: 8354bd5e9c6a78c40aa14c72d170391e,
         type: 3}

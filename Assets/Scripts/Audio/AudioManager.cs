@@ -21,6 +21,12 @@ public enum PlayerSound
     Hurt,
     Die
 }
+
+public enum EnemySound
+{
+    Walk,
+    Attack
+}
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;
@@ -30,6 +36,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource exitButtonSource;
     [SerializeField] private AudioSource clickButtonSource;
     [SerializeField] private Sound[] uISounds;
+    [SerializeField] private Sound[] enemySounds;
     
     private void Awake()
     {
@@ -118,11 +125,30 @@ public class AudioManager : MonoBehaviour
         if (_source.clip==sound.GetClip() && ((_source.loop &&!_source.isPlaying)||!_source.loop))
         {
             _source.Play();
-            return;
         }
         
 
     }
-    
+
+    public void PlayEnemySound(EnemySound _sound, AudioSource _source)
+    {
+        string name = GetEnemySoundName(_sound);
+        PlaySound(name, enemySounds, _source);
+    }
+    string GetEnemySoundName(EnemySound _sound)
+    {
+        string sound = null;
+        switch (_sound)
+        {
+            case EnemySound.Walk:
+                sound = "Walk";
+                break;
+            case EnemySound.Attack:
+                sound = "Attack";
+                break;
+        }
+
+        return sound;
+    }
     
 }
