@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground") )
+        if ((groundLayer | (1<<other.gameObject.layer)) != 0)
         {
             onGround = false;
         }
