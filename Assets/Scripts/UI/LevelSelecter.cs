@@ -10,11 +10,14 @@ public class LevelSelecter : MonoBehaviour
 {
     [SerializeField] private int level;
     private Button button;
+    
 
     private void Awake()
     {
         button = gameObject.GetComponent<Button>();
         button.onClick.AddListener(GotoLevel);
+        
+
     }
 
     public void SetLevel(int _level)
@@ -37,16 +40,17 @@ public class LevelSelecter : MonoBehaviour
         bool interactable= CheckLock();
         button.interactable = interactable;
         Color buttonColor = button.GetComponent<Image>().color;
+        ButtonAudioController audioController = GetComponent<ButtonAudioController>();
         if (!interactable && buttonColor==Color.white)
         {
             button.GetComponent<Image>().color=Color.gray;
-            button.GetComponent<ButtonAudioController>().enabled = false;
+            audioController.enabled = false;
         }
 
         if (interactable && buttonColor==Color.gray)
         {
             buttonColor = Color.white;
-            button.GetComponent<ButtonAudioController>().enabled = true;
+            audioController.enabled = true; 
         }
     }
 }

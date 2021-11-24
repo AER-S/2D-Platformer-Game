@@ -10,7 +10,8 @@ public class LevelOverController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            LevelController.Instance.GoToNextLevel();
+            LevelController.Instance.LevelWonPanel();
+            //FindObjectOfType<PlayerController>().enabled = false;
         }
     }
 }

@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private bool backward;
     private bool dead;
     private int hearts;
+
+    private float horizontal;
+    private float vertical;
     
 
     // Start is called before the first frame update
@@ -43,29 +46,37 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
         run = Input.GetKey(KeyCode.LeftShift);
         crouch = Input.GetKey(KeyCode.LeftControl);
         
         Animate(horizontal, vertical);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        // horizontal = Input.GetAxisRaw("Horizontal");
+        // vertical = Input.GetAxisRaw("Vertical");
+        // run = Input.GetKey(KeyCode.LeftShift);
+        // crouch = Input.GetKey(KeyCode.LeftControl);
+        //
+        // Animate(horizontal, vertical);
         Move(horizontal, vertical);
     }
 
     void Animate(float _horizontal, float _vertical)
     {
-        
+        animator.SetBool("jump",jump);
+        animator.SetBool("run",run);
         if (!dead && !hurt)
         {
             GetDirection(_horizontal);
-            animator.SetBool("run",run);
-        
             if (onGround)
             {
-                animator.SetBool("jump",false);
                 animator.SetFloat("speed",Mathf.Abs(_horizontal));
                 animator.SetBool("crouch",crouch);
             }
@@ -74,13 +85,8 @@ public class PlayerController : MonoBehaviour
                 animator.SetFloat("speed", 0f);
             
             }
-            if (_vertical>0 && onGround && !jump)
-            {
-                jump = true;
-                animator.SetBool("jump",true);
-                soundsController.PlayPlayerSound(PlayerSound.Jump);
-            }
         }
+        
     }
 
     void GetDirection(float _horizontal)
@@ -93,8 +99,6 @@ public class PlayerController : MonoBehaviour
         
         
     }
-
-
     void Move(float _horizontal, float _vertical)
     {
 
@@ -123,8 +127,9 @@ public class PlayerController : MonoBehaviour
                         StopPlayer();
                     }
 
-                    if (_vertical>0)
+                    if (_vertical>0 && !jump)
                     {
+                        jump = true;
                         Vector2 newJump = new Vector2(rigidBody.velocity.x, jumpPower);
                         rigidBody.velocity = newJump;
                     }
@@ -145,7 +150,6 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-
     void GoBackward()
     {
         Vector2 velocity = rigidBody.velocity;
@@ -161,7 +165,6 @@ public class PlayerController : MonoBehaviour
             hurt = false;
         }
     }
-
     void StopPlayer()
     {
         rigidBody.velocity *= Vector2.up;
@@ -170,18 +173,33 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(boxCollider2D.bounds.size.x *0.98f, 0.001f), 0f, Vector2.down, 0.05f,groundLayer);
-        if (ground)
-        {
-            onGround = true;
-            jump = false;
-            soundsController.PlayPlayerSound(PlayerSound.Land);
-        } 
+        CheckForGround();
     }
 
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (!onGround)
+        {
+            CheckForGround();
+        }
+    }
+    
+
+    bool CheckForGround()
+    {
+        RaycastHit2D ground = Physics2D.BoxCast(bottomLine.position, new Vector2(boxCollider2D.bounds.size.x *0.999f, 0.001f), 0f, Vector2.down, 0.05f,groundLayer);
+        if (ground)
+        {
+            soundsController.PlayPlayerSound(PlayerSound.Land);
+            jump = false;
+            onGround = true;
+        }
+
+        return ground;
+    }
     private void OnCollisionExit2D(Collision2D other)
     {
-        if ((groundLayer | (1<<other.gameObject.layer)) != 0)
+        if (!CheckForGround() &&(groundLayer | (1<<other.gameObject.layer)) != 0)
         {
             onGround = false;
         }

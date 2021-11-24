@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float maxOffset = 5;
 
     [SerializeField] private float verticalOffset = 1;
+
+    [SerializeField] private float minYPosition = -1;
     // Start is called before the first frame update
     
 
@@ -18,6 +20,10 @@ public class CameraController : MonoBehaviour
         Vector3 newPosition = transform.position;
         Vector3 targetPosition = target.position;
         newPosition.y = target.position.y+verticalOffset;
+        if (newPosition.y<minYPosition)
+        {
+            newPosition.y = minYPosition;
+        }
         float offset = target.position.x - transform.position.x;
         if (Mathf.Abs(offset)>maxOffset)
         {

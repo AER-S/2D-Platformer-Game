@@ -459,6 +459,17 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+  enemySounds:
+  - name: Walk
+    clip: {fileID: 8300000, guid: 2efac6b1f1b3cb84f8090b80da4bf152, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+  - name: Attack
+    clip: {fileID: 8300000, guid: 98660f6b09ff5c0469a3601564315ec0, type: 3}
+    volume: 1
+    pitch: 3
+    loop: 0
 --- !u!1 &8984889135546225385
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +548,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0

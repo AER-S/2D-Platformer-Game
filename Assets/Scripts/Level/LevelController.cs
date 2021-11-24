@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject levelWonPanel;
     private static LevelController instance;
     public  static LevelController Instance
     {
@@ -48,5 +49,10 @@ public class LevelController : MonoBehaviour
         int nextScene = sceneIndex + 1;
         ProfileController.UpdateLocked(nextScene);
         SceneManager.LoadScene(nextScene);
+    }
+
+    public void LevelWonPanel()
+    {
+        levelWonPanel.SetActive(true);
     }
 }
